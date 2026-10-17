@@ -13,6 +13,7 @@ permissions:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+
     steps:
       - name: Get the code
         uses: actions/checkout@v4
@@ -30,24 +31,34 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/dazinenoamane/app-portfolio:${{ github.sha }}
-      - name: Get the gitops repo
+
+      - name: Get the GitOps repo
         uses: actions/checkout@v4
-        with: 
+        with:
           repository: dazinenoamane/gitops-portfolio
-          ssh-key: ${{ secrets.GITOPS_DEPLOY_KEY}}
+          ssh-key: ${{ secrets.GITOPS_DEPLOY_KEY }}
           path: gitops
+
       - name: Update image tag
         run: |
           cd gitops
-          echo "before"
-          cat manifests/deployment.yaml
-          sed -i "s|image: ghcr.io/dazinenoamane/app-portfolio:.*|image: ghcr.io/dazinenoamane/app-portfolio:${{ github.sha }}|" manifests/deployment.yaml
-          echo "After:"
-          cat manifests/deployment.yaml
 
-          echo "Diff:"
-          git diff -- manifests/deployment.yaml
-          #git config user.name "github-actions[bot]"
-          #git config user.email "github-actions[bot]@users.noreply.github.com"
-          #git add manifests/deployment.yaml
-         # git diff --cached --quiet && echo "Nothing to change" || (git commit -m "Deploy portfolio-app ${{ github.sha }}" && git push)
+          echo "Image before update:"
+          grep -n 'image' manifests/deployment.yaml
+
+          sed -i "s|image *: ghcr.io/dazinenoamane/portfolio-app:.*|image: ghcr.io/dazinenoamane/app-portfolio:${{ github.sha }}|" manifests/deployment.yaml
+
+          echo "Image after update:"
+          grep -n 'image' manifests/deployment.yaml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add manifests/deployment.yaml
+
+          if git diff --cached --quiet; then
+            echo "Nothing to change"
+          else
+            git commit -m "Deploy app-portfolio ${{ github.sha }}"
+            git push
+          fi
