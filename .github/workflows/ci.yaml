@@ -3,6 +3,8 @@ name: CI
 on:
   push:
     branches: [master]
+    path-ignore:
+      - 'README.md'
 
 permissions:
   contents: read
@@ -28,3 +30,17 @@ jobs:
           context: .
           push: true
           tags: ghcr.io/dazinenoamane/portfolio-app:${{ github.sha }}
+      - name: Get the gitops repo
+        uses: actions/checkout@v4
+        with: 
+          repository: dazinenoamane/gitops-portfolio
+          ssh-key: ${{ secrets.GITOPS_DEPLOY_KEY}}
+          path: gitops
+      - name: Update image tag
+        run:
+          cd gitops
+          sed -i "s|image: ghcr.io/dazinenoamane/app-portfolio:.*|image: ghcr.io/dazinenoamane/app-portfolio:${{ github.sha }}|" manifests/deployment.yaml
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add manifests/deployment.yaml
+          git diff --cached --quiet && echo "Nothing to change" || (git commit -m "Deploy portfolio-app ${{ github.sha }}" && git push)
