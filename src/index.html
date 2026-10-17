@@ -1,30 +1,257 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Portfolio</title>
+
+  <meta name="description" content="DevOps engineering portfolio showcasing Kubernetes, GitOps, CI/CD, and infrastructure automation projects.">
+
+  <title>DevOps Portfolio | Infrastructure & Automation</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <header>
-    <h1>Your Name</h1>
-    <p>Aspiring DevOps engineer</p>
-  </header>
-  <main>
-    <section>
-      <h2>About</h2>
-      <p>I'm learning Kubernetes, CI/CD and GitOps by building real infrastructure.</p>
-    </section>
-    <section>
-      <h2>This site's stack</h2>
+    <nav>
+      <a href="#" class="logo">DevOps<span>.</span></a>
+
       <ul>
-        <li>Proxmox VM running k3s</li>
-        <li>GitHub Actions to build the image</li>
-        <li>Argo CD to deploy it (GitOps)</li>
-        <li>Terraform and Ansible to build the infrastructure</li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#stack">Infrastructure</a></li>
       </ul>
+
+      <a href="#contact" class="nav-contact">Contact</a>
+    </nav>
+
+    <div class="hero">
+      <p class="eyebrow">DEVOPS ENGINEERING · CLOUD · AUTOMATION</p>
+
+      <h1>Building reliable infrastructure.<br>
+        <span>Automating everything.</span>
+      </h1>
+
+      <p class="hero-description">
+        I'm learning DevOps by building and managing real infrastructure.
+        My focus is containerization, Kubernetes, CI/CD pipelines,
+        GitOps, and infrastructure as code.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="button primary">Explore my projects</a>
+        <a href="https://github.com/dazinenoamane"
+           class="button secondary"
+           target="_blank"
+           rel="noopener noreferrer">
+          View GitHub ↗
+        </a>
+      </div>
+
+      <div class="status">
+        <span class="status-dot"></span>
+        Building and improving my home lab
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">01 / ABOUT</p>
+        <h2>Learning by building</h2>
+      </div>
+
+      <div class="about-content">
+        <p>
+          I believe the best way to understand infrastructure is to build it,
+          break it, troubleshoot it, and improve it.
+        </p>
+
+        <p>
+          This portfolio documents my journey toward automated,
+          reproducible, and reliable deployments. Each project helps me
+          understand how different DevOps tools work together in a real
+          environment.
+        </p>
+      </div>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">02 / TECHNOLOGIES</p>
+        <h2>Tools I'm working with</h2>
+        <p class="section-description">
+          Technologies used to build, deploy, and manage my infrastructure.
+        </p>
+      </div>
+
+      <div class="skills-grid">
+        <article class="skill-card">
+          <span class="card-number">01</span>
+          <h3>Containers & Orchestration</h3>
+          <p>Docker, Kubernetes, K3s</p>
+        </article>
+
+        <article class="skill-card">
+          <span class="card-number">02</span>
+          <h3>CI/CD & GitOps</h3>
+          <p>GitHub Actions, Argo CD, Git</p>
+        </article>
+
+        <article class="skill-card">
+          <span class="card-number">03</span>
+          <h3>Infrastructure as Code</h3>
+          <p>Terraform, Ansible</p>
+        </article>
+
+        <article class="skill-card">
+          <span class="card-number">04</span>
+          <h3>Virtualization & Systems</h3>
+          <p>Proxmox, Linux, networking</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="projects" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">03 / SELECTED WORK</p>
+        <h2>Projects & experiments</h2>
+      </div>
+
+      <article class="project-card">
+        <div class="project-top">
+          <span class="project-label">01 — IN PROGRESS</span>
+          <span class="project-category">GitOps / Kubernetes</span>
+        </div>
+
+        <h3>Portfolio Deployment Platform</h3>
+
+        <p>
+          A containerized portfolio deployed on a K3s cluster, with
+          automated image builds and GitOps-based deployment management.
+        </p>
+
+        <ul class="project-features">
+          <li>Container image builds with GitHub Actions</li>
+          <li>Image publishing to GitHub Container Registry</li>
+          <li>Kubernetes manifests managed in Git</li>
+          <li>Application synchronization with Argo CD</li>
+        </ul>
+
+        <div class="tags">
+          <span>Docker</span>
+          <span>K3s</span>
+          <span>GitHub Actions</span>
+          <span>Argo CD</span>
+          <span>GHCR</span>
+        </div>
+
+        <a href="https://github.com/dazinenoamane"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="project-link">
+          Explore the repository ↗
+        </a>
+      </article>
+
+      <article class="project-card">
+        <div class="project-top">
+          <span class="project-label">02 — IN PROGRESS</span>
+          <span class="project-category">Automation / IaC</span>
+        </div>
+
+        <h3>Home Lab Infrastructure</h3>
+
+        <p>
+          A virtualized environment for experimenting with Linux servers,
+          networking, container workloads, and infrastructure automation.
+        </p>
+
+        <ul class="project-features">
+          <li>Virtual machines hosted on Proxmox</li>
+          <li>Linux server administration</li>
+          <li>Infrastructure provisioning with Terraform</li>
+          <li>Configuration management with Ansible</li>
+        </ul>
+
+        <div class="tags">
+          <span>Proxmox</span>
+          <span>Linux</span>
+          <span>Terraform</span>
+          <span>Ansible</span>
+        </div>
+      </article>
+    </section>
+
+    <section id="stack" class="section">
+      <div class="section-heading">
+        <p class="eyebrow">04 / ARCHITECTURE</p>
+        <h2>How the pieces connect</h2>
+        <p class="section-description">
+          An overview of the deployment workflow behind this portfolio.
+        </p>
+      </div>
+
+      <div class="architecture">
+        <div class="architecture-step">
+          <span>01</span>
+          <h3>GitHub</h3>
+          <p>Source code and version control</p>
+        </div>
+
+        <div class="architecture-arrow">→</div>
+
+        <div class="architecture-step">
+          <span>02</span>
+          <h3>CI Pipeline</h3>
+          <p>Build and publish container images</p>
+        </div>
+
+        <div class="architecture-arrow">→</div>
+
+        <div class="architecture-step">
+          <span>03</span>
+          <h3>Argo CD</h3>
+          <p>Synchronize desired cluster state</p>
+        </div>
+
+        <div class="architecture-arrow">→</div>
+
+        <div class="architecture-step">
+          <span>04</span>
+          <h3>K3s</h3>
+          <p>Run the application in Kubernetes</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section contact-section">
+      <p class="eyebrow">05 / CONTACT</p>
+      <h2>Let's connect.</h2>
+
+      <p>
+        Interested in DevOps, cloud infrastructure, automation,
+        and open-source projects? Explore my work or connect with me.
+      </p>
+
+      <div class="hero-actions">
+        <a href="https://github.com/dazinenoamane"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="button primary">
+          GitHub ↗
+        </a>
+      </div>
     </section>
   </main>
+
+  <footer>
+    <p>Built with HTML, CSS, and a passion for automation.</p>
+    <p>© 2026 DevOps Portfolio</p>
+  </footer>
 </body>
 </html>
+
