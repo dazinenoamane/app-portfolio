@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     branches: [master]
-    path-ignore:
+    paths-ignore:
       - 'README.md'
 
 permissions:
@@ -40,7 +40,12 @@ jobs:
         run: |
           cd gitops
           sed -i "s|image: ghcr.io/dazinenoamane/app-portfolio:.*|image: ghcr.io/dazinenoamane/app-portfolio:${{ github.sha }}|" manifests/deployment.yaml
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add manifests/deployment.yaml
-          git diff --cached --quiet && echo "Nothing to change" || (git commit -m "Deploy portfolio-app ${{ github.sha }}" && git push)
+          echo "After:"
+          cat manifests/deployment.yaml
+
+          echo "Diff:"
+          git diff -- manifests/deployment.yaml
+          #git config user.name "github-actions[bot]"
+          #git config user.email "github-actions[bot]@users.noreply.github.com"
+          #git add manifests/deployment.yaml
+         # git diff --cached --quiet && echo "Nothing to change" || (git commit -m "Deploy portfolio-app ${{ github.sha }}" && git push)
