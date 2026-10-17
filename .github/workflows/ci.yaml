@@ -37,7 +37,7 @@ jobs:
           ssh-key: ${{ secrets.GITOPS_DEPLOY_KEY}}
           path: gitops
       - name: Update image tag
-        run:
+        run: |
           cd gitops
           sed -i "s|image: ghcr.io/dazinenoamane/app-portfolio:.*|image: ghcr.io/dazinenoamane/app-portfolio:${{ github.sha }}|" manifests/deployment.yaml
           git config user.name "github-actions[bot]"
