@@ -39,6 +39,8 @@ jobs:
       - name: Update image tag
         run: |
           cd gitops
+          echo "before"
+          cat manifests/deployment.yaml
           sed -i "s|image: ghcr.io/dazinenoamane/app-portfolio:.*|image: ghcr.io/dazinenoamane/app-portfolio:${{ github.sha }}|" manifests/deployment.yaml
           echo "After:"
           cat manifests/deployment.yaml
